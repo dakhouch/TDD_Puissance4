@@ -41,5 +41,16 @@ public class Grille {
     public List<Jeton> getColumn(int column) {
         return lines.stream().map(line -> line.get(column-1)).collect(Collectors.toList());
     }
+
+    public List<List<Jeton>> getDiagonals() {
+        return Arrays.asList(
+                Arrays.asList(this.lines.get(0).get(0),this.lines.get(1).get(1),this.lines.get(2).get(2),this.lines.get(3).get(3),this.lines.get(4).get(4),this.lines.get(5).get(5)),
+                Arrays.asList(this.lines.get(1).get(0),this.lines.get(2).get(1),this.lines.get(3).get(2),this.lines.get(4).get(3),this.lines.get(5).get(4))
+                );
+    }
+
+    public List<List<Jeton>> getAllLines() {
+        return lines;
+    }
 }
 
