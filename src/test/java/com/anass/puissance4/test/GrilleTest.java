@@ -358,13 +358,36 @@ class GrilleTest{
 
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1,2,3,4,5,6,7})
+    void getAllLColumsShouldReturnAllGridColumns(int col) throws InvalidColonException, ColumnFullException {
+        //given
+        Grille grille=new Grille();
+        //when
+        List<List<Jeton>> allColumns=grille.getAllColumns();
+
+        //then
+        Assertions.assertIterableEquals(grille.getColumn(col), allColumns.get(col-1));
+
+    }
 
 
 
-    private static void fillNextLine(Grille grille) {
+
+
+    static void fillNextLine(Grille grille) {
         IntStream.range(1,8).forEach(col-> {
             try {
                 grille.addTocken(col, new JetonJoueur());
+            } catch (InvalidColonException | ColumnFullException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+    static void fillNextLine(Grille grille, List<JetonJoueur> jetonJoueurs) {
+        IntStream.range(1,8).forEach(col-> {
+            try {
+                grille.addTocken(col, jetonJoueurs.get(col-1));
             } catch (InvalidColonException | ColumnFullException e) {
                 throw new RuntimeException(e);
             }

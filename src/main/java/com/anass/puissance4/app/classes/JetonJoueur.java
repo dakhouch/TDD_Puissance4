@@ -5,6 +5,6 @@ public class JetonJoueur extends Jeton {
         super(content);
     }
     public JetonJoueur() {
-       super("o");
+       super(null);
     }
 }

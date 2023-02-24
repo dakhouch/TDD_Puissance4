@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Grille {
 
@@ -16,7 +17,9 @@ public class Grille {
 
     public void addTocken(int nbrColone, Jeton jeton) throws InvalidColonException, ColumnFullException {
 
-       if(nbrColone<1 || nbrColone>7) throw new InvalidColonException();
+       if(nbrColone<1 || nbrColone>7){
+           throw new InvalidColonException();
+       }
         List<Jeton> nextLine = this.lines.stream()
                 .filter(line -> line.get(nbrColone - 1) instanceof JetonVide).findFirst()
                 .orElseThrow(ColumnFullException::new);
@@ -51,6 +54,10 @@ public class Grille {
 
     public List<List<Jeton>> getAllLines() {
         return lines;
+    }
+
+    public List<List<Jeton>> getAllColumns() {
+        return IntStream.range(1,8).mapToObj(this::getColumn).collect(Collectors.toList());
     }
 }
 
