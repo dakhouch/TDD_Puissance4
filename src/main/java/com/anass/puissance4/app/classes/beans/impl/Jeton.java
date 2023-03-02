@@ -1,4 +1,5 @@
-package com.anass.puissance4.app.classes;
+package com.anass.puissance4.app.classes.beans.impl;
+
 
 import java.util.Objects;
 

@@ -1,6 +1,12 @@
 package com.anass.puissance4.test;
 
-import com.anass.puissance4.app.classes.*;
+import com.anass.puissance4.app.classes.beans.impl.Analyser;
+import com.anass.puissance4.app.classes.beans.impl.GameState;
+import com.anass.puissance4.app.classes.beans.impl.Grille;
+import com.anass.puissance4.app.classes.beans.impl.JetonJoueur;
+import com.anass.puissance4.app.classes.exceptions.ColumnFullException;
+import com.anass.puissance4.app.classes.exceptions.GridNullException;
+import com.anass.puissance4.app.classes.exceptions.InvalidColonException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;

@@ -1,4 +1,9 @@
-package com.anass.puissance4.app.classes;
+package com.anass.puissance4.app.classes.beans.impl;
+
+import com.anass.puissance4.app.classes.beans.IGrille;
+import com.anass.puissance4.app.classes.exceptions.ColumnFullException;
+import com.anass.puissance4.app.classes.exceptions.InvalidColonException;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,7 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Grille {
+@Component
+public class Grille implements IGrille {
 
     private List<List<Jeton>> lines = new ArrayList<>(Arrays.asList(initLine(), initLine(), initLine(), initLine(), initLine(), initLine()));
 

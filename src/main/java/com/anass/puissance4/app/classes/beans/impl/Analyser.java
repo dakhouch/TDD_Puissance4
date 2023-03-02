@@ -1,12 +1,17 @@
-package com.anass.puissance4.app.classes;
+package com.anass.puissance4.app.classes.beans.impl;
+
+import com.anass.puissance4.app.classes.beans.IAnalyser;
+import com.anass.puissance4.app.classes.beans.IGrille;
+import com.anass.puissance4.app.classes.exceptions.GridNullException;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class Analyser {
+@Component
+public class Analyser implements IAnalyser {
 
-    public GameState checkGame(Grille grille) {
+    public GameState checkGame(IGrille grille) {
         if(grille == null) throw new GridNullException();
         if(grille.getAllLines().stream().anyMatch(line->
                 has4ConnectedTokens(line)
